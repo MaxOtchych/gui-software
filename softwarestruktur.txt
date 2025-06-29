@@ -1,0 +1,13 @@
+mitarbeiterverwaltung/
+├── app.py                  # Haupt-Flask-Anwendung
+├── config.py               # Konfigurationen
+├── requirements.txt        # Python-Abhängigkeiten
+├── static/
+│   └── styles.css          # CSS-Datei
+└── templates/
+    ├── layout.html         # Basis-Template
+    ├── login.html          # Login-Seite
+    ├── dashboard.html      # Hauptseite
+    ├── mitarbeiter.html    # Mitarbeiterliste
+    ├── bearbeiten.html     # Bearbeitungsformular
+    └── neu.html            # Neuer Mitarbeiter

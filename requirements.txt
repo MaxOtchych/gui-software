@@ -1,0 +1,4 @@
+Flask==2.3.3
+flask-azure-oauth==0.7.0
+pyodbc==5.2.0
+python-dotenv==1.1.1

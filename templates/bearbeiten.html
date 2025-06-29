@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Mitarbeiter bearbeiten</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" 
+                   value="{{ mitarbeiter.Vorname }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname"
+                   value="{{ mitarbeiter.Nachname }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"
+                   value="{{ mitarbeiter.Email }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="telefon">Telefon:</label>
+            <input type="text" id="telefon" name="telefon"
+                   value="{{ mitarbeiter.Telefon }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="abteilung">Abteilung:</label>
+            <select id="abteilung" name="abteilung" required>
+                {% for abt in abteilungen %}
+                    <option value="{{ abt.AbteilungID }}"
+                            {% if abt.AbteilungID == mitarbeiter.AbteilungID %}selected{% endif %}>
+                        {{ abt.Name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="position">Position:</label>
+            <select id="position" name="position" required>
+                {% for pos in positionen %}
+                    <option value="{{ pos.PositionID }}"
+                            {% if pos.PositionID == mitarbeiter.PositionID %}selected{% endif %}>
+                        {{ pos.Bezeichnung }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <button type="submit" class="btn-save">Speichern</button>
+        <a href="{{ url_for('mitarbeiter') }}" class="btn-cancel">Abbrechen</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="mitarbeiter-container">
+    <div class="toolbar">
+        <form method="GET" action="{{ url_for('mitarbeiter') }}" class="search-form">
+            <input type="text" name="search" placeholder="Mitarbeiter suchen..." 
+                   value="{{ search_query }}" class="search-input">
+            <button type="submit" class="button">
+                <i class="fas fa-search"></i> Suchen
+            </button>
+        </form>
+        
+        <a href="{{ url_for('mitarbeiter_neu') }}" class="button btn-success">
+            <i class="fas fa-user-plus"></i> Neuer Mitarbeiter
+        </a>
+    </div>
+
+    <table class="mitarbeiter-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Email</th>
+                <th>Abteilung</th>
+                <th>Position</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ma in mitarbeiter %}
+            <tr>
+                <td>{{ ma.MitarbeiterID }}</td>
+                <td>{{ ma.Vorname }}</td>
+                <td>{{ ma.Nachname }}</td>
+                <td>{{ ma.Email }}</td>
+                <td>{{ ma.Abteilung }}</td>
+                <td>{{ ma.Position }}</td>
+                <td class="actions">
+                    <a href="{{ url_for('mitarbeiter_bearbeiten', id=ma.MitarbeiterID) }}" class="button btn-small btn-primary">
+                        <i class="fas fa-edit"></i> Bearbeiten
+                    </a>
+                    <a href="{{ url_for('mitarbeiter_löschen', id=ma.MitarbeiterID) }}" class="button btn-small btn-danger">
+                        <i class="fas fa-trash"></i> Löschen
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
