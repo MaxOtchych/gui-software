@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import pyodbc
 from config import Config
-import logging
+#import logging
 from datetime import datetime
 
 # Initialisierung
@@ -55,7 +55,8 @@ def get_db_connection():
         )
         return conn
     except Exception as e:
-        logging.error(f"Datenbankverbindungsfehler: {str(e)}")
+#        logging.error(f"Datenbankverbindungsfehler: {str(e)}")
+        flash(f"Datenbankverbindungsfehler: {str(e)}", 'error')
         raise
 
 # Routen
